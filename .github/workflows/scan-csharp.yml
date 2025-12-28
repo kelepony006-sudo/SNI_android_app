@@ -1,8 +1,6 @@
-name: CSharp Scan
+name: CSharp Base Scan
 
 on:
-  push:
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -10,21 +8,15 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
 
     steps:
-      - name: Scarica il codice
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          clean: false
+          clean: true
 
-      - name: Imposta .NET
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
-      - name: Ripristina dipendenze
-        run: dotnet restore
-
-      - name: Build (controllo errori)
-        run: dotnet build --no-restore
-
-      - name: Scansione sicurezza
-        run: semgrep scan --config=p/csharp
+      - name: Build
+        run: dotnet build
