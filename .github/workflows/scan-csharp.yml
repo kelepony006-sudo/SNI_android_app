@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Scarica il codice
         uses: actions/checkout@v4
+        with:
+          clean: false
 
       - name: Imposta .NET
         uses: actions/setup-dotnet@v4
