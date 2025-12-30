@@ -62,6 +62,15 @@
         android:backgroundTint="#333333"
         android:textColor="#ffffff" />
 
+	<Button
+        android:id="@+id/btnGallery"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="GALLERIA"
+        android:layout_margin="10dp"
+        android:backgroundTint="#333333"
+        android:textColor="#ffffff" />
+
     <!-- Versione -->
     <TextView
         android:layout_width="wrap_content"
