@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
+using Android.Views;
 using System;
 using System.IO;
 using System.Net;
@@ -18,6 +19,7 @@ namespace SkullNetworkItalia.App
     public class MainActivity : Activity
     {
         private const string GITHUB_REPO = "https://github.com/SkullNetworkItalia/app";
+        private const string GITHUB_ISSUES_URL = "https://github.com/SkullNetworkItalia/app/issues/new/choose";
         private const string APK_DOWNLOAD_URL = "https://tuoserver.com/app/update.apk";
         private const string VERSION_CHECK_URL = "https://tuoserver.com/app/version.txt";
         private const string APP_VERSION = "1.0.0";
@@ -84,12 +86,12 @@ namespace SkullNetworkItalia.App
         {
             var builder = new AlertDialog.Builder(this);
             builder.SetTitle("Aggiornamento Disponibile");
-            builder.SetMessage("È disponibile una nuova versione dell'app. Vuoi scaricarla ora?");
+            builder.SetMessage("Ãˆ disponibile una nuova versione dell'app. Vuoi scaricarla ora?");
             builder.SetPositiveButton("Scarica", (sender, e) =>
             {
                 DownloadAndInstallUpdate();
             });
-            builder.SetNegativeButton("Più tardi", (sender, e) => { });
+            builder.SetNegativeButton("PiÃ¹ tardi", (sender, e) => { });
             builder.Show();
         }
 
@@ -142,6 +144,23 @@ namespace SkullNetworkItalia.App
             var uri = Android.Net.Uri.Parse(url);
             var intent = new Intent(Intent.ActionView, uri);
             StartActivity(intent);
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.main_menu, menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.menu_report_bug)
+            {
+                OpenUrl(GITHUB_ISSUES_URL);
+                return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
         }
     }
 }
