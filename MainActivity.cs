@@ -18,8 +18,7 @@ namespace SkullNetworkItalia.App
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : Activity
     {
-        private const string GITHUB_REPO = "https://github.com/SkullNetworkItalia/app";
-        private const string GITHUB_ISSUES_URL = "https://github.com/SkullNetworkItalia/app/issues/new/choose";
+        private const string GITHUB_ISSUES_URL = "https://github.com/SkullNetworkItalia/app/issues/new";
         private const string APK_DOWNLOAD_URL = "https://tuoserver.com/app/update.apk";
         private const string VERSION_CHECK_URL = "https://tuoserver.com/app/version.txt";
         private const string APP_VERSION = "1.0.0";
